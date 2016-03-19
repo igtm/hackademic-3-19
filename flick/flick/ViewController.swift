@@ -24,12 +24,29 @@ class ViewController: UIViewController {
     //メイン
     override func viewDidLoad() {
         super.viewDidLoad()
-        str = "apple"
+        str = dictionary[3]
         let cnt = str.characters.count-1
         let diff = 1
+        let myAppFrameSize: CGSize = UIScreen.mainScreen().applicationFrame.size
         // make wrong
         let wrong = make(str, diff:diff, cnt:cnt)
         
+        make_button(wrong, diff:diff, cnt:cnt)
+        // make label
+        let myLabel: UILabel = UILabel()
+        myLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),535)
+        myLabel.textAlignment = NSTextAlignment.Center
+        myLabel.text = "Move              times"
+        self.view.addSubview(myLabel)
+        
+        cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520)
+        cntLabel.textAlignment = NSTextAlignment.Center
+        cntLabel.font = UIFont.systemFontOfSize(40)
+        cntLabel.text = "\(diff)"
+        self.view.addSubview(cntLabel)
+    }
+    
+    func make_button(wrong:String, diff:Int, cnt:Int){
         // 画面サイズ
         let myAppFrameSize: CGSize = UIScreen.mainScreen().applicationFrame.size
         // 箱を置く位置の開始位置
@@ -63,22 +80,10 @@ class ViewController: UIViewController {
                 if y == 0{
                     buttons.append(btn)
                     buttons_char.append(charactor)
-               }
+                }
             }
         }
         
-        // make label
-        let myLabel: UILabel = UILabel()
-        myLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),535)
-        myLabel.textAlignment = NSTextAlignment.Center
-        myLabel.text = "Move              times"
-        self.view.addSubview(myLabel)
-        
-        cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520)
-        cntLabel.textAlignment = NSTextAlignment.Center
-        cntLabel.font = UIFont.systemFontOfSize(40)
-        cntLabel.text = "\(diff)"
-        self.view.addSubview(cntLabel)
     }
     
     func make(original:String, diff:Int, cnt:Int)->String{
@@ -103,6 +108,7 @@ class ViewController: UIViewController {
         }
         var ret = ""
         for i in 0...cnt{
+            print(words[i],ary[i])
             words[i] = (26 + ary[i] + words[i]) % 26
             ret += alf[words[i]]
         }
@@ -115,7 +121,6 @@ class ViewController: UIViewController {
         let x = mybtn.x
         let y = mybtn.y
         let str = buttons_char[x]
-        print(str)
         var index = 0
         //押されたボタンごとに結果が異なる    
         for i in 0...alf.count-1{
@@ -123,7 +128,6 @@ class ViewController: UIViewController {
                 index = i
             }
         }
-        print(index)
         
         if y == 1 {
             buttons_char[x] = alf[(index+1)%26]
@@ -132,7 +136,6 @@ class ViewController: UIViewController {
         }
         
         buttons[x].setTitle(buttons_char[x], forState: UIControlState.Normal)
-        print("button at (\(mybtn.x),\(mybtn.y)) is pushed")
         
         // check state
         check()
@@ -145,11 +148,9 @@ class ViewController: UIViewController {
             let substrStartIndex = str.startIndex.advancedBy(i)
             let substrEndIndex = substrStartIndex.advancedBy(1)
             let substr = str.substringWithRange(Range(start: substrStartIndex, end: substrEndIndex))
-            print(buttons_char[i],substr)
             if(buttons_char[i] != substr){
                 var b = -1, s = -1
                 for j in 0...alf.count{
-                    print(i,j,b,s,ret)
                     if buttons_char[i] == alf[j] {b = j}
                     if substr == alf[j] {s = j}
                     if s >= 0 && b >= 0 {break}
@@ -157,13 +158,19 @@ class ViewController: UIViewController {
                 ret += min((26-s+b)%26,(26+s-b)%26)
                 
             }
-            print(ret)
         }
-        print(ret)
         cntLabel.text = "\(ret)"
         self.view.addSubview(cntLabel)
         if ret == 0{
-            let random = arc4random() % 10
+            buttons.removeAll()
+            buttons_char.removeAll()
+            let cnt = str.characters.count-1
+            let diff = 1
+            let random = Int(arc4random()) % dictionary.count
+            str = dictionary[random]
+            let wrong = make(str, diff:diff, cnt:cnt)
+            
+            make_button(wrong, diff:diff, cnt:cnt)
         }
         return ret
     }
