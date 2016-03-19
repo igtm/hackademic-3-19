@@ -33,13 +33,13 @@ class ViewController: UIViewController {
         
         make_button(wrong, diff:diff, cnt:cnt)
         // make label
-        let myLabel: UILabel = UILabel()
+        let myLabel: UILabel = UILabel() // Design カウントの周りのラベル
         myLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),535)
         myLabel.textAlignment = NSTextAlignment.Center
         myLabel.text = "Move              times"
         self.view.addSubview(myLabel)
         
-        cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520)
+        cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520) // Design カウントの数字のラベル
         cntLabel.textAlignment = NSTextAlignment.Center
         cntLabel.font = UIFont.systemFontOfSize(40)
         cntLabel.text = "\(diff)"
@@ -52,9 +52,9 @@ class ViewController: UIViewController {
         // 箱を置く位置の開始位置
         let begin = Int(myAppFrameSize.width)/2 - (50 + (cnt)*60)/2
         print(begin)
-        for x in 0...cnt{
-            for y in 0...2{
-                //位置を変えながらボタンを作る
+        for x in 0...cnt{ // 横の列
+            for y in 0...2{ // 縦の列
+                //位置を変えながらボタンを作る // Desigin Xx3 のますのボタンの設定
                 let btn : UIButton = MyButton(
                     x:x,
                     y:y,
@@ -63,14 +63,14 @@ class ViewController: UIViewController {
                 btn.addTarget(self, action: "pushed:", forControlEvents: .TouchUpInside)
                 
                 let charactor = String(wrong[wrong.startIndex.advancedBy(x)])
-                if y == 0 {
+                if y == 0 { // Design 1段目
                     btn.setTitle(charactor, forState: UIControlState.Normal)
                     btn.setTitleColor(UIColor.blueColor(), forState: .Normal)
-                } else if y == 1 {
+                } else if y == 1 { // Design 2段目
                     btn.setTitle("▲", forState: UIControlState.Normal)
                     btn.backgroundColor = UIColor.redColor()
                     btn.layer.cornerRadius = 10
-                } else {
+                } else { // Design 3段目
                     btn.setTitle("▼", forState: UIControlState.Normal)
                     btn.backgroundColor = UIColor.redColor()
                     btn.layer.cornerRadius = 10
