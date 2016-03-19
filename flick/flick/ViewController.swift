@@ -4,6 +4,9 @@ class ViewController: UIViewController {
     
     var buttons: [UIButton] = []
     var buttons_char: [String] = []
+    let cntLabel: UILabel = UILabel()
+    
+    var str = ""
     // UIButtonを継承した独自クラス
     class MyButton: UIButton{
         let x:Int
@@ -21,7 +24,7 @@ class ViewController: UIViewController {
     //メイン
     override func viewDidLoad() {
         super.viewDidLoad()
-        let str = "apple"
+        str = "apple"
         let cnt = str.characters.count-1
         let diff = 1
         // make wrong
@@ -67,7 +70,6 @@ class ViewController: UIViewController {
         myLabel.text = "Move              times"
         self.view.addSubview(myLabel)
         
-        let cntLabel: UILabel = UILabel()
         cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520)
         cntLabel.textAlignment = NSTextAlignment.Center
         cntLabel.font = UIFont.systemFontOfSize(40)
@@ -133,11 +135,29 @@ class ViewController: UIViewController {
     }
     
     func check()->Int{
-        let ret = 0
+        let alf = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        var ret = 0
         for i in 0...buttons.count-1{
-            print(i)
-//            print(buttons_char[i])
+            let substrStartIndex = str.startIndex.advancedBy(i)
+            let substrEndIndex = substrStartIndex.advancedBy(1)
+            let substr = str.substringWithRange(Range(start: substrStartIndex, end: substrEndIndex))
+            print(buttons_char[i],substr)
+            if(buttons_char[i] != substr){
+                var b = -1, s = -1
+                for j in 0...alf.count{
+                    print(i,j,b,s,ret)
+                    if buttons_char[i] == alf[j] {b = j}
+                    if substr == alf[j] {s = j}
+                    if s >= 0 && b >= 0 {break}
+                }
+                ret += min((26-s+b)%26,(26+s-b)%26)
+                
+            }
+            print(ret)
         }
+        print(ret)
+        cntLabel.text = "\(ret)"
+        self.view.addSubview(cntLabel)
         return ret
     }
 }
