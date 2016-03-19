@@ -5,7 +5,7 @@ class ViewController: UIViewController {
     var buttons: [UIButton] = []
     var buttons_char: [String] = []
     let cntLabel: UILabel = UILabel()
-    
+    var dictionary = ["apple","orange","banana","meat","fish","egg"]
     var str = ""
     // UIButtonを継承した独自クラス
     class MyButton: UIButton{
@@ -44,15 +44,19 @@ class ViewController: UIViewController {
                     frame:CGRectMake(CGFloat(x)*60 + CGFloat(begin),CGFloat(y)*60 + 50,50,50))
                 //ボタンを押したときの動作
                 btn.addTarget(self, action: "pushed:", forControlEvents: .TouchUpInside)
-                //見える用に赤くした
-                btn.backgroundColor = UIColor.redColor()
+                
                 let charactor = String(wrong[wrong.startIndex.advancedBy(x)])
                 if y == 0 {
                     btn.setTitle(charactor, forState: UIControlState.Normal)
+                    btn.setTitleColor(UIColor.blueColor(), forState: .Normal)
                 } else if y == 1 {
                     btn.setTitle("▲", forState: UIControlState.Normal)
+                    btn.backgroundColor = UIColor.redColor()
+                    btn.layer.cornerRadius = 10
                 } else {
                     btn.setTitle("▼", forState: UIControlState.Normal)
+                    btn.backgroundColor = UIColor.redColor()
+                    btn.layer.cornerRadius = 10
                 }
                 //画面に追加
                 view.addSubview(btn)
@@ -158,6 +162,9 @@ class ViewController: UIViewController {
         print(ret)
         cntLabel.text = "\(ret)"
         self.view.addSubview(cntLabel)
+        if ret == 0{
+            let random = arc4random() % 10
+        }
         return ret
     }
 }
