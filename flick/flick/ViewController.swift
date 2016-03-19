@@ -21,8 +21,12 @@ class ViewController: UIViewController {
     //メイン
     override func viewDidLoad() {
         super.viewDidLoad()
-        let str = "melon"
+        let str = "apple"
         let cnt = str.characters.count-1
+        let diff = 1
+        // make wrong
+        let wrong = make(str, diff:diff, cnt:cnt)
+        
         // 画面サイズ
         let myAppFrameSize: CGSize = UIScreen.mainScreen().applicationFrame.size
         // 箱を置く位置の開始位置
@@ -39,7 +43,7 @@ class ViewController: UIViewController {
                 btn.addTarget(self, action: "pushed:", forControlEvents: .TouchUpInside)
                 //見える用に赤くした
                 btn.backgroundColor = UIColor.redColor()
-                let charactor = String(str[str.startIndex.advancedBy(x)])
+                let charactor = String(wrong[wrong.startIndex.advancedBy(x)])
                 if y == 0 {
                     btn.setTitle(charactor, forState: UIControlState.Normal)
                 } else if y == 1 {
@@ -55,6 +59,48 @@ class ViewController: UIViewController {
                }
             }
         }
+        
+        // make label
+        let myLabel: UILabel = UILabel()
+        myLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),535)
+        myLabel.textAlignment = NSTextAlignment.Center
+        myLabel.text = "Move              times"
+        self.view.addSubview(myLabel)
+        
+        let cntLabel: UILabel = UILabel()
+        cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520)
+        cntLabel.textAlignment = NSTextAlignment.Center
+        cntLabel.font = UIFont.systemFontOfSize(40)
+        cntLabel.text = "\(diff)"
+        self.view.addSubview(cntLabel)
+    }
+    
+    func make(original:String, diff:Int, cnt:Int)->String{
+        let alf = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        var ary:[Int] = []
+        for _ in 0...cnt{
+            ary.append(0)
+        }
+        var words:[Int] = []
+        for codeUnit in original.utf8 {
+            words.append(Int(codeUnit - 97))
+        }
+        
+        for _ in 1...diff{
+            let index = (Int)(arc4random_uniform(UInt32(cnt*2+1)))
+            if(ary[index/2] != 0){
+                ary[index/2] += (ary[index/2] > 0 ? 1 : -1)
+            }else{
+                ary[index/2] = (index>cnt ? -1 : 1)
+            }
+
+        }
+        var ret = ""
+        for i in 0...cnt{
+            words[i] = (26 + ary[i] + words[i]) % 26
+            ret += alf[words[i]]
+        }
+        return ret
     }
     
     //ボタンが押されたときの動作
@@ -70,7 +116,6 @@ class ViewController: UIViewController {
             if alf[i] == str{
                 index = i
             }
-            print(alf[i])
         }
         print(index)
         
@@ -79,9 +124,20 @@ class ViewController: UIViewController {
         }else if y == 2{
             buttons_char[x] = alf[(index+25)%26]
         }
-
+        
         buttons[x].setTitle(buttons_char[x], forState: UIControlState.Normal)
         print("button at (\(mybtn.x),\(mybtn.y)) is pushed")
         
+        // check state
+        check()
+    }
+    
+    func check()->Int{
+        let ret = 0
+        for i in 0...buttons.count-1{
+            print(i)
+//            print(buttons_char[i])
+        }
+        return ret
     }
 }
