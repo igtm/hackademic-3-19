@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02E04806AD31AF34A7AF8116 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D94F3370ADDEA5C6E1C7348 /* libPods.a */; };
 		05E69DE91C9CE6FD00B2FFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E69DE81C9CE6FD00B2FFF1 /* AppDelegate.swift */; };
 		05E69DEB1C9CE6FD00B2FFF1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E69DEA1C9CE6FD00B2FFF1 /* FirstViewController.swift */; };
 		05E69DED1C9CE6FD00B2FFF1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E69DEC1C9CE6FD00B2FFF1 /* SecondViewController.swift */; };
@@ -15,6 +16,7 @@
 		05E69DF51C9CE6FE00B2FFF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05E69DF31C9CE6FE00B2FFF1 /* LaunchScreen.storyboard */; };
 		05E69E001C9CE6FE00B2FFF1 /* Hackamedia_3_19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E69DFF1C9CE6FE00B2FFF1 /* Hackamedia_3_19Tests.swift */; };
 		05E69E0B1C9CE6FF00B2FFF1 /* Hackamedia_3_19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E69E0A1C9CE6FF00B2FFF1 /* Hackamedia_3_19UITests.swift */; };
+		7866158C3551C9EAC18E0642 /* libPods-Hackamedia-3-19.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 408557704726A0C82492A874 /* libPods-Hackamedia-3-19.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,10 @@
 		05E69E061C9CE6FE00B2FFF1 /* Hackamedia-3-19UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hackamedia-3-19UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E69E0A1C9CE6FF00B2FFF1 /* Hackamedia_3_19UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hackamedia_3_19UITests.swift; sourceTree = "<group>"; };
 		05E69E0C1C9CE6FF00B2FFF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		408557704726A0C82492A874 /* libPods-Hackamedia-3-19.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hackamedia-3-19.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D94F3370ADDEA5C6E1C7348 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C015AF656D22AF35430B14B3 /* Pods-Hackamedia-3-19.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackamedia-3-19.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hackamedia-3-19/Pods-Hackamedia-3-19.release.xcconfig"; sourceTree = "<group>"; };
+		C306E4DD971CA3E4A937AA6C /* Pods-Hackamedia-3-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackamedia-3-19.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hackamedia-3-19/Pods-Hackamedia-3-19.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7866158C3551C9EAC18E0642 /* libPods-Hackamedia-3-19.a in Frameworks */,
+				02E04806AD31AF34A7AF8116 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +91,8 @@
 				05E69DFE1C9CE6FE00B2FFF1 /* Hackamedia-3-19Tests */,
 				05E69E091C9CE6FF00B2FFF1 /* Hackamedia-3-19UITests */,
 				05E69DE61C9CE6FD00B2FFF1 /* Products */,
+				EF9DD9304191BB39561D8385 /* Pods */,
+				546CE125296D166BE93DB3D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +138,24 @@
 			path = "Hackamedia-3-19UITests";
 			sourceTree = "<group>";
 		};
+		546CE125296D166BE93DB3D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				408557704726A0C82492A874 /* libPods-Hackamedia-3-19.a */,
+				9D94F3370ADDEA5C6E1C7348 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF9DD9304191BB39561D8385 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C306E4DD971CA3E4A937AA6C /* Pods-Hackamedia-3-19.debug.xcconfig */,
+				C015AF656D22AF35430B14B3 /* Pods-Hackamedia-3-19.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +163,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05E69E0F1C9CE6FF00B2FFF1 /* Build configuration list for PBXNativeTarget "Hackamedia-3-19" */;
 			buildPhases = (
+				D6C9C5E1F78B67F331203BBA /* Check Pods Manifest.lock */,
 				05E69DE11C9CE6FD00B2FFF1 /* Sources */,
 				05E69DE21C9CE6FD00B2FFF1 /* Frameworks */,
 				05E69DE31C9CE6FD00B2FFF1 /* Resources */,
+				6BDB179C7C56A55FFCFFE2FB /* Embed Pods Frameworks */,
+				B6DB16695E297F0D373A8C0E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +284,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6BDB179C7C56A55FFCFFE2FB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6DB16695E297F0D373A8C0E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6C9C5E1F78B67F331203BBA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05E69DE11C9CE6FD00B2FFF1 /* Sources */ = {
@@ -399,6 +478,7 @@
 		};
 		05E69E101C9CE6FF00B2FFF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C306E4DD971CA3E4A937AA6C /* Pods-Hackamedia-3-19.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Hackamedia-3-19/Info.plist";
@@ -410,6 +490,7 @@
 		};
 		05E69E111C9CE6FF00B2FFF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C015AF656D22AF35430B14B3 /* Pods-Hackamedia-3-19.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Hackamedia-3-19/Info.plist";
@@ -486,6 +567,7 @@
 				05E69E111C9CE6FF00B2FFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05E69E121C9CE6FF00B2FFF1 /* Build configuration list for PBXNativeTarget "Hackamedia-3-19Tests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +576,7 @@
 				05E69E141C9CE6FF00B2FFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05E69E151C9CE6FF00B2FFF1 /* Build configuration list for PBXNativeTarget "Hackamedia-3-19UITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +585,7 @@
 				05E69E171C9CE6FF00B2FFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
