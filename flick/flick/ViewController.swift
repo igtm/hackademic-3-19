@@ -3,6 +3,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var buttons: [UIButton] = []
+    var selector: [UIButton] = []
     var buttons_char: [String] = []
     let cntLabel: UILabel = UILabel()
     var dictionary = ["apple","orange","banana","meat","fish","egg"]
@@ -31,7 +32,6 @@ class ViewController: UIViewController {
         // make wrong
         let wrong = make(str, diff:diff, cnt:cnt)
         
-        make_button(wrong, diff:diff, cnt:cnt)
         // make label
         let myLabel: UILabel = UILabel() // Design カウントの周りのラベル
         myLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),535)
@@ -46,7 +46,36 @@ class ViewController: UIViewController {
         self.view.addSubview(cntLabel)
     }
     
-    func make_button(wrong:String, diff:Int, cnt:Int){
+    func make(original:String, diff:Int, cnt:Int)->String{
+        let alf = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        var ary:[Int] = []
+        for _ in 0...cnt{
+            ary.append(0)
+        }
+        var words:[Int] = []
+        for codeUnit in original.utf8{
+            words.append(Int(codeUnit - 97))
+        }
+        
+        for _ in 1...diff{
+            let index = (Int)(arc4random_uniform(UInt32(cnt*2+1)))
+            if(ary[index/2] != 0){
+                ary[index/2] += (ary[index/2] > 0 ? 1 : -1)
+            }else{
+                ary[index/2] = (index>cnt ? -1 : 1)
+            }
+
+        }
+        var ret = ""
+        print(ary,words)
+        for i in 0...cnt{
+            
+            print(ary.count,words.count,i)
+            
+            words[i] = (26 + ary[i] + words[i]) % 26
+            ret += alf[words[i]]
+        }
+        
         // 画面サイズ
         let myAppFrameSize: CGSize = UIScreen.mainScreen().applicationFrame.size
         // 箱を置く位置の開始位置
@@ -62,7 +91,7 @@ class ViewController: UIViewController {
                 //ボタンを押したときの動作
                 btn.addTarget(self, action: "pushed:", forControlEvents: .TouchUpInside)
                 
-                let charactor = String(wrong[wrong.startIndex.advancedBy(x)])
+                let charactor = String(ret[ret.startIndex.advancedBy(x)])
                 if y == 0 { // Design 1段目
                     btn.setTitle(charactor, forState: UIControlState.Normal)
                     btn.setTitleColor(UIColor.blueColor(), forState: .Normal)
@@ -70,6 +99,7 @@ class ViewController: UIViewController {
                     btn.setTitle("▲", forState: UIControlState.Normal)
                     btn.backgroundColor = UIColor.redColor()
                     btn.layer.cornerRadius = 10
+                    
                 } else { // Design 3段目
                     btn.setTitle("▼", forState: UIControlState.Normal)
                     btn.backgroundColor = UIColor.redColor()
@@ -81,37 +111,10 @@ class ViewController: UIViewController {
                     buttons.append(btn)
                     buttons_char.append(charactor)
                 }
+                selector.append(btn)
             }
         }
-        
-    }
-    
-    func make(original:String, diff:Int, cnt:Int)->String{
-        let alf = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-        var ary:[Int] = []
-        for _ in 0...cnt{
-            ary.append(0)
-        }
-        var words:[Int] = []
-        for codeUnit in original.utf8 {
-            words.append(Int(codeUnit - 97))
-        }
-        
-        for _ in 1...diff{
-            let index = (Int)(arc4random_uniform(UInt32(cnt*2+1)))
-            if(ary[index/2] != 0){
-                ary[index/2] += (ary[index/2] > 0 ? 1 : -1)
-            }else{
-                ary[index/2] = (index>cnt ? -1 : 1)
-            }
-
-        }
-        var ret = ""
-        for i in 0...cnt{
-            print(words[i],ary[i])
-            words[i] = (26 + ary[i] + words[i]) % 26
-            ret += alf[words[i]]
-        }
+        check()
         return ret
     }
     
@@ -141,7 +144,7 @@ class ViewController: UIViewController {
         check()
     }
     
-    func check()->Int{
+    func check(){
         let alf = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
         var ret = 0
         for i in 0...buttons.count-1{
@@ -162,16 +165,18 @@ class ViewController: UIViewController {
         cntLabel.text = "\(ret)"
         self.view.addSubview(cntLabel)
         if ret == 0{
+            for i in selector{
+               i.removeFromSuperview()
+            }
             buttons.removeAll()
             buttons_char.removeAll()
-            let cnt = str.characters.count-1
+            
             let diff = 1
             let random = Int(arc4random()) % dictionary.count
             str = dictionary[random]
+            var cnt = str.characters.count-1
             let wrong = make(str, diff:diff, cnt:cnt)
             
-            make_button(wrong, diff:diff, cnt:cnt)
         }
-        return ret
     }
 }
