@@ -20,8 +20,8 @@ class ViewController: UIViewController {
     //メイン
     override func viewDidLoad() {
         super.viewDidLoad()
-        let str = "apple"
-        for x in 0...4{
+        let str = "run"
+        for x in 0...str.characters.count-1{
             for y in 0...2{
                 //位置を変えながらボタンを作る
                 let btn : UIButton = MyButton(
@@ -33,10 +33,7 @@ class ViewController: UIViewController {
                 //見える用に赤くした
                 btn.backgroundColor = UIColor.redColor()
                 if y == 0 {
-                    if x < str.characters.count {
-                        print(str[str.startIndex.advancedBy(x)])
-                    }
-                    btn.setTitle(String(str[str.startIndex.advancedBy(x)]), forState: UIControlState.Normal)
+                                        btn.setTitle(String(str[str.startIndex.advancedBy(x)]), forState: UIControlState.Normal)
                     print("btn" + String(x))
                 } else if y == 1 {
                     btn.setTitle("▲", forState: UIControlState.Normal)
