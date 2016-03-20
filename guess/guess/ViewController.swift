@@ -13,14 +13,21 @@ class ViewController: UIViewController {
     var timeCnt : Int = 0
     var timer : NSTimer!
     let timeLabel: UILabel = UILabel()
-    let myLabel: UILabel = UILabel()
-    var selector: [UIButton] = []
-    var ans_labes: [UILabel] = []
-    var buttons_char: [String] = []
     
+    // selector
     var buttons: [UIButton] = []
-    var answer_string: String = ""
+    var buttons_char: [String] = []
     var anser_strings: [String] = []
+    var ans_labes: [UILabel] = []
+    
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    
+    
+    // answers
+    var answer_string: String = ""
     
     var Label: [UILabel] = [] // Design カウントの周りのラベル
     
@@ -95,13 +102,14 @@ class ViewController: UIViewController {
         button.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.9)
         for btn in [kota1, kota2, kota3, kota4]{
             btn.backgroundColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 0.9)
-
             // ボタンの影
             btn.layer.shadowOffset = CGSizeMake(5.0, 5.0)
             btn.layer.shadowOpacity = 0.5
-            
             btn.layer.cornerRadius = 20
-            
+        }
+        for label in [label1,label2,label3,label4]{
+            label.font = UIFont.systemFontOfSize(30)
+            label.textColor = UIColor.whiteColor()
         }
     }
     
@@ -170,22 +178,17 @@ class ViewController: UIViewController {
         }
         print(answer)
         
-        var rand = arc4random_uniform(4) + 0
+        let rand = arc4random_uniform(4) + 0
         for i in 0...3{
             anser_strings[i] = alphabet[answer[(i+Int(rand))%4]]
             if(i == 0){
-                kota1.setTitle(alphabet[answer[(i+Int(rand))%4]], forState: UIControlState.Normal)
-                
-                //                kota1.text = alphabet[answer[(i+Int(rand))%4]]
+                label1.text = anser_strings[i]
             }else if(i == 1){
-                kota2.setTitle(alphabet[answer[(i+Int(rand))%4]], forState: UIControlState.Normal)
-
+                label2.text = anser_strings[i]
             }else if(i == 2){
-                kota3.setTitle(alphabet[answer[(i+Int(rand))%4]], forState: UIControlState.Normal)
-                
+                label3.text = anser_strings[i]
             }else{
-                kota4.setTitle(alphabet[answer[(i+Int(rand))%4]], forState: UIControlState.Normal)
-                
+                label4.text = anser_strings[i]
             }
         }
         
@@ -193,38 +196,13 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func function1(sender: AnyObject) {
-        print(answer_string)
-        print(anser_strings[0])
-        if(answer_string == anser_strings[0]){
-            nextProblem()
-        }
-    }
+    // check result function
+    @IBAction func function1(sender: AnyObject) {if(answer_string == anser_strings[0]){nextProblem()}}
+    @IBAction func function2(sender: AnyObject) {if(answer_string == anser_strings[1]){nextProblem()}}
+    @IBAction func function3(sender: AnyObject) {if(answer_string == anser_strings[2]){nextProblem()}}
+    @IBAction func function4(sender: AnyObject) {if(answer_string == anser_strings[3]){nextProblem()}}
     
-    @IBAction func function2(sender: AnyObject) {
-        print(answer_string)
-        print(anser_strings[1])
-        if(answer_string == anser_strings[1]){
-            nextProblem()
-        }
-    }
-
-    @IBAction func function3(sender: AnyObject) {
-        print(answer_string)
-        print(anser_strings[2])
-        if(answer_string == anser_strings[2]){
-            nextProblem()
-        }
-    }
-    
-    @IBAction func function4(sender: AnyObject) {
-        print(answer_string)
-        print(anser_strings[3])
-        if(answer_string == anser_strings[3]){
-            nextProblem()
-        }
-    }
-    
+    // select next problem
     func nextProblem(){
         library()
         quiz()
