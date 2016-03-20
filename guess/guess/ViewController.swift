@@ -9,11 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    // for timer
     var timeCnt : Int = 0
     var timer : NSTimer!
-    
-    let cntLabel: UILabel = UILabel()
     let timeLabel: UILabel = UILabel()
     let myLabel: UILabel = UILabel()
     var selector: [UIButton] = []
@@ -24,13 +22,31 @@ class ViewController: UIViewController {
     var answer_string: String = ""
     var anser_strings: [String] = []
     
+    var Label: [UILabel] = [] // Design カウントの周りのラベル
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        timerSetUp()
+        Initialize()
         for _ in 0...3{
             anser_strings.append("a")
-            
-        
         }
+        
+        let myAppFrameSize: CGSize = UIScreen.mainScreen().applicationFrame.size
+        timeLabel.frame = CGRectMake(40,0,(myAppFrameSize.width),187)
+        timeLabel.font = UIFont.systemFontOfSize(35)
+        timeLabel.textAlignment = NSTextAlignment.Center
+        timeLabel.text = "30"
+        self.view.addSubview(timeLabel)
+        Label.append(timeLabel)
+        
+        var timerLabel: UILabel = UILabel()
+        timerLabel.frame = CGRectMake(0,0,(myAppFrameSize.width)-40,200)
+        timerLabel.textAlignment = NSTextAlignment.Center
+        timerLabel.text = "Limit : "
+        self.view.addSubview(timerLabel)
+        Label.append(timerLabel)
+        
         library()
         quiz()
         
@@ -55,18 +71,6 @@ class ViewController: UIViewController {
             timeCnt += 1
             timeLabel.text = "\(30-timeCnt)"
             print(timeCnt) // println()は、Swift2よりDeprecatedになりました。
-        } else {
-            for i in selector{
-                i.removeFromSuperview()
-            }
-            for i in ans_labes{
-                i.removeFromSuperview()
-            }
-            ans_labes.removeAll()
-            buttons_char.removeAll()
-            timeLabel.removeFromSuperview()
-            cntLabel.removeFromSuperview()
-            myLabel.removeFromSuperview()
         }
     }
     
@@ -87,8 +91,19 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
+    func Initialize(){
+        button.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.9)
+        for btn in [kota1, kota2, kota3, kota4]{
+            btn.backgroundColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 0.9)
+
+            // ボタンの影
+            btn.layer.shadowOffset = CGSizeMake(5.0, 5.0)
+            btn.layer.shadowOpacity = 0.5
+            
+            btn.layer.cornerRadius = 20
+            
+        }
+    }
     
     
     //問題のところだよ
@@ -178,41 +193,37 @@ class ViewController: UIViewController {
         
     }
     
-        @IBAction func function1(sender: AnyObject) {
-            print(answer_string)
-            print(anser_strings[0])
-            if(answer_string == anser_strings[0]){
-                print("miyakura")
-                nextProblem()
-            }
+    @IBAction func function1(sender: AnyObject) {
+        print(answer_string)
+        print(anser_strings[0])
+        if(answer_string == anser_strings[0]){
+            nextProblem()
         }
+    }
     
-        @IBAction func function2(sender: AnyObject) {
+    @IBAction func function2(sender: AnyObject) {
         print(answer_string)
         print(anser_strings[1])
         if(answer_string == anser_strings[1]){
-            print("miyakura")
             nextProblem()
-            }
         }
-    
-        @IBAction func function3(sender: AnyObject) {
+    }
+
+    @IBAction func function3(sender: AnyObject) {
         print(answer_string)
         print(anser_strings[2])
         if(answer_string == anser_strings[2]){
-            print("miyakura")
             nextProblem()
-            }
         }
+    }
     
-        @IBAction func function4(sender: AnyObject) {
+    @IBAction func function4(sender: AnyObject) {
         print(answer_string)
         print(anser_strings[3])
         if(answer_string == anser_strings[3]){
-            print("miyakura")
             nextProblem()
-            }
         }
+    }
     
     func nextProblem(){
         library()
