@@ -2,11 +2,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // for timer
+    var timeCnt : Int = 0
+    var timer : NSTimer!
+    // for quiz app
     var buttons: [UIButton] = []
     var selector: [UIButton] = []
     var buttons_char: [String] = []
+    var ans_labes: [UILabel] = []
     let cntLabel: UILabel = UILabel()
-    var dictionary = ["apple","orange","banana","meat","fish","egg"]
+    let timeLabel: UILabel = UILabel()
+    let myLabel: UILabel = UILabel() // Design カウントの周りのラベル
+    var dictionary = ["apple","image","phone","meat","fish","guess"]
     var str = ""
     // UIButtonを継承した独自クラス
     class MyButton: UIButton{
@@ -25,6 +32,7 @@ class ViewController: UIViewController {
     //メイン
     override func viewDidLoad() {
         super.viewDidLoad()
+        timerSetUp()
         str = dictionary[3]
         let cnt = str.characters.count-1
         let diff = 1
@@ -33,17 +41,59 @@ class ViewController: UIViewController {
         let wrong = make(str, diff:diff, cnt:cnt)
         
         // make label
-        let myLabel: UILabel = UILabel() // Design カウントの周りのラベル
+        
+        timeLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),200)
+        cntLabel.font = UIFont.systemFontOfSize(30)
+        timeLabel.textAlignment = NSTextAlignment.Center
+        timeLabel.text = "30"
+        self.view.addSubview(timeLabel)
+        
         myLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),535)
         myLabel.textAlignment = NSTextAlignment.Center
         myLabel.text = "Move              times"
         self.view.addSubview(myLabel)
-        
         cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520) // Design カウントの数字のラベル
         cntLabel.textAlignment = NSTextAlignment.Center
         cntLabel.font = UIFont.systemFontOfSize(40)
         cntLabel.text = "\(diff)"
         self.view.addSubview(cntLabel)
+    }
+    
+    func onUpdate(timer : NSTimer){
+        if(timeCnt < 30){
+            timeCnt += 1
+            timeLabel.text = "\(30-timeCnt)"
+            print(timeCnt) // println()は、Swift2よりDeprecatedになりました。
+        } else {
+            for i in selector{
+                i.removeFromSuperview()
+            }
+            for i in ans_labes{
+                i.removeFromSuperview()
+            }
+            ans_labes.removeAll()
+            buttons_char.removeAll()
+            timeLabel.removeFromSuperview()
+            cntLabel.removeFromSuperview()
+            myLabel.removeFromSuperview()
+        }
+    }
+    
+    func timerSetUp(){
+        let myDate: NSDate = NSDate()
+        let myCalendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let myComponetns = myCalendar.components(NSCalendarUnit(rawValue: NSCalendarUnit.Year.rawValue   |
+            NSCalendarUnit.Hour.rawValue   |
+            NSCalendarUnit.Minute.rawValue |
+            NSCalendarUnit.Second.rawValue) ,
+            fromDate: myDate) // 注
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onUpdate:", userInfo: nil, repeats: true)
+        timer.fire()
+        var myStr: String = "\(myComponetns.hour)"
+        myStr += "\(myComponetns.minute)"
+        myStr += "\(myComponetns.second)"
+
     }
     
     func make(original:String, diff:Int, cnt:Int)->String{
@@ -79,37 +129,48 @@ class ViewController: UIViewController {
         // 画面サイズ
         let myAppFrameSize: CGSize = UIScreen.mainScreen().applicationFrame.size
         // 箱を置く位置の開始位置
-        let begin = Int(myAppFrameSize.width)/2 - (50 + (cnt)*60)/2
+        let begin = Int(myAppFrameSize.width)/2 - (70 + (cnt)*80)/2
         print(begin)
+        
+        for i in 0...cnt{
+            let charactor = String(ret[ret.startIndex.advancedBy(i)])
+            
+            let ansLabel: UILabel = UILabel() // Design カウントの周りのラベル
+            ansLabel.frame = CGRectMake(CGFloat(i)*80 + CGFloat(begin),350,80,80) // Design カウントの数字のラベル
+            ansLabel.textAlignment = NSTextAlignment.Center
+            ansLabel.font = UIFont.systemFontOfSize(40)
+            ansLabel.text = charactor
+            self.view.addSubview(ansLabel)
+            ans_labes.append(ansLabel)
+            buttons_char.append(charactor)
+
+        }
         for x in 0...cnt{ // 横の列
-            for y in 0...2{ // 縦の列
+            for y in 0...1{ // 縦の列
                 //位置を変えながらボタンを作る // Desigin Xx3 のますのボタンの設定
                 let btn : UIButton = MyButton(
                     x:x,
                     y:y,
-                    frame:CGRectMake(CGFloat(x)*60 + CGFloat(begin),CGFloat(y)*60 + 50,50,50))
+                    frame:CGRectMake(CGFloat(x)*80 + CGFloat(begin),CGFloat(y)*80 + 438,70,70))
                 //ボタンを押したときの動作
                 btn.addTarget(self, action: "pushed:", forControlEvents: .TouchUpInside)
                 
-                let charactor = String(ret[ret.startIndex.advancedBy(x)])
+                // タイトルを設定する(ボタンがハイライトされた時).
+                btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+                
                 if y == 0 { // Design 1段目
-                    btn.setTitle(charactor, forState: UIControlState.Normal)
-                    btn.setTitleColor(UIColor.blueColor(), forState: .Normal)
-                } else if y == 1 { // Design 2段目
                     btn.setTitle("▲", forState: UIControlState.Normal)
                     btn.backgroundColor = UIColor.redColor()
-                    btn.layer.cornerRadius = 10
-                    
-                } else { // Design 3段目
+                    btn.layer.cornerRadius = 20
+                } else if y == 1 { // Design 2段目
                     btn.setTitle("▼", forState: UIControlState.Normal)
                     btn.backgroundColor = UIColor.redColor()
-                    btn.layer.cornerRadius = 10
+                    btn.layer.cornerRadius = 20
                 }
                 //画面に追加
                 view.addSubview(btn)
                 if y == 0{
                     buttons.append(btn)
-                    buttons_char.append(charactor)
                 }
                 selector.append(btn)
             }
@@ -132,13 +193,13 @@ class ViewController: UIViewController {
             }
         }
         
-        if y == 1 {
+        if y == 0 {
             buttons_char[x] = alf[(index+1)%26]
-        }else if y == 2{
+        }else if y == 1{
             buttons_char[x] = alf[(index+25)%26]
         }
         
-        buttons[x].setTitle(buttons_char[x], forState: UIControlState.Normal)
+        ans_labes[x].text = buttons_char[x]
         
         // check state
         check()
@@ -147,7 +208,7 @@ class ViewController: UIViewController {
     func check(){
         let alf = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
         var ret = 0
-        for i in 0...buttons.count-1{
+        for i in 0...ans_labes.count-1{
             let substrStartIndex = str.startIndex.advancedBy(i)
             let substrEndIndex = substrStartIndex.advancedBy(1)
             let substr = str.substringWithRange(Range(start: substrStartIndex, end: substrEndIndex))
@@ -166,16 +227,18 @@ class ViewController: UIViewController {
         self.view.addSubview(cntLabel)
         if ret == 0{
             for i in selector{
-               i.removeFromSuperview()
+                i.removeFromSuperview()
             }
-            buttons.removeAll()
+            for i in ans_labes{
+                i.removeFromSuperview()
+            }
+            ans_labes.removeAll()
             buttons_char.removeAll()
-            
             let diff = 1
             let random = Int(arc4random()) % dictionary.count
             str = dictionary[random]
-            var cnt = str.characters.count-1
-            let wrong = make(str, diff:diff, cnt:cnt)
+            let cnt = str.characters.count-1
+            make(str, diff:diff, cnt:cnt)
             
         }
     }
