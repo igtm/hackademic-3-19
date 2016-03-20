@@ -47,6 +47,8 @@ class SelectGameController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1.0);
+
         
         // ハードコード:　次のページをランダム
         let apps = ["flick"]
