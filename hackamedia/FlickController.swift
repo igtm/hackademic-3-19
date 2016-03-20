@@ -171,7 +171,7 @@ class FlickController: UIViewController {
         return result;
     }
     func onUpdate(timer : NSTimer){
-        if(timeCnt < 3000000000){
+        if(timeCnt < 30){
             timeCnt += 1
             timeLabel.text = "\(30-timeCnt)"
             print(timeCnt) // println()は、Swift2よりDeprecatedになりました。

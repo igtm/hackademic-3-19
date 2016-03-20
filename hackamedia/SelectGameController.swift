@@ -28,8 +28,8 @@ class SelectGameController: UIViewController {
     // タイマー終了後
     func afterTimer(){
         // ハードコード:　次のページをランダム
-        let apps = ["flick"]
-        let rand = Int(arc4random_uniform(1))
+        let apps = ["flick","guess"]
+        let rand = Int(arc4random_uniform(2))
         print("rand : \(rand)")
         
         move(apps[rand])
@@ -51,8 +51,8 @@ class SelectGameController: UIViewController {
 
         
         // ハードコード:　次のページをランダム
-        let apps = ["flick"]
-        let rand = Int(arc4random_uniform(1))
+        let apps = ["flick","guess"]
+        let rand = Int(arc4random_uniform(2))
         print("rand : \(rand)")
         
         

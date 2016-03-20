@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ffi-uQ-NZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636.5" y="686.5"/>
+            <point key="canvasLocation" x="1626.5" y="1106.5"/>
         </scene>
         <!--Select Game Controller-->
         <scene sceneID="0rQ-B6-ymM">
@@ -89,6 +89,97 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btG-mJ-2cZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="627.5" y="-323.5"/>
+        </scene>
+        <!--Guess Controller-->
+        <scene sceneID="XbC-QJ-nCv">
+            <objects>
+                <viewController storyboardIdentifier="guess" id="x9x-rb-hdt" customClass="GuessController" customModule="hackamedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nOe-Y5-llM"/>
+                        <viewControllerLayoutGuide type="bottom" id="JW4-Ex-H8Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ha6-SI-diw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RG5-sz-FOH">
+                                <rect key="frame" x="65" y="152" width="245" height="95"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZU-dg-e9T">
+                                <rect key="frame" x="53" y="328" width="98" height="98"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="function1:" destination="x9x-rb-hdt" eventType="touchDown" id="0E3-aw-wZP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLx-tz-AtL">
+                                <rect key="frame" x="223" y="328" width="98" height="98"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="function2:" destination="x9x-rb-hdt" eventType="touchDown" id="mUQ-7U-0LI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8T-8d-s9H">
+                                <rect key="frame" x="223" y="468" width="98" height="98"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="function4:" destination="x9x-rb-hdt" eventType="touchDown" id="5nK-PG-uqv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qND-x7-q7Q">
+                                <rect key="frame" x="53" y="468" width="98" height="98"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="function3:" destination="x9x-rb-hdt" eventType="touchDown" id="giq-e1-cfQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-Cr-qoJ">
+                                <rect key="frame" x="81" y="328" width="42" height="98"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDl-pI-6bC">
+                                <rect key="frame" x="252" y="328" width="42" height="98"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jU-QU-vQF">
+                                <rect key="frame" x="252" y="468" width="42" height="98"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USU-Y4-Y0P">
+                                <rect key="frame" x="81" y="468" width="42" height="98"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="button" destination="RG5-sz-FOH" id="g9y-6p-uFO"/>
+                        <outlet property="kota1" destination="DZU-dg-e9T" id="4v6-pW-Xdh"/>
+                        <outlet property="kota2" destination="nLx-tz-AtL" id="x7o-UJ-upl"/>
+                        <outlet property="kota3" destination="qND-x7-q7Q" id="lSx-4w-boi"/>
+                        <outlet property="kota4" destination="R8T-8d-s9H" id="FEI-p5-2vU"/>
+                        <outlet property="label1" destination="eaw-Cr-qoJ" id="cl3-6r-hbH"/>
+                        <outlet property="label2" destination="gDl-pI-6bC" id="wPp-gt-C9y"/>
+                        <outlet property="label3" destination="USU-Y4-Y0P" id="ys9-fz-sEg"/>
+                        <outlet property="label4" destination="3jU-QU-vQF" id="Wo8-Ic-FrP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sZ8-0x-hMz" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1614.5" y="323.5"/>
         </scene>
     </scenes>
 </document>
