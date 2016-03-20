@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     var ans_labes: [UILabel] = []
     let cntLabel: UILabel = UILabel()
     let timeLabel: UILabel = UILabel()
-    let myLabel: UILabel = UILabel() // Design カウントの周りのラベル
+    var myLabel: [UILabel] = [] // Design カウントの周りのラベル
     var dictionary = ["apple","image","phone","meat","fish","guess"]
     var str = ""
     // UIButtonを継承した独自クラス
@@ -42,19 +42,31 @@ class ViewController: UIViewController {
         
         // make label
         
-        timeLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),200)
-        cntLabel.font = UIFont.systemFontOfSize(30)
+        timeLabel.frame = CGRectMake(40,0,(myAppFrameSize.width),187)
+        timeLabel.font = UIFont.systemFontOfSize(35)
         timeLabel.textAlignment = NSTextAlignment.Center
         timeLabel.text = "30"
         self.view.addSubview(timeLabel)
         
-        myLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),535)
-        myLabel.textAlignment = NSTextAlignment.Center
-        myLabel.text = "Move              times"
-        self.view.addSubview(myLabel)
+        
+        var label: UILabel = UILabel()
+        label.frame = CGRectMake(0,0,(myAppFrameSize.width),535)
+        label.textAlignment = NSTextAlignment.Center
+        label.text = "Move              times"
+        self.view.addSubview(label)
+        myLabel.append(label)
+        
+        var timerLabel: UILabel = UILabel()
+        timerLabel.frame = CGRectMake(0,0,(myAppFrameSize.width)-40,200)
+        timerLabel.textAlignment = NSTextAlignment.Center
+        timerLabel.text = "Limit : "
+        self.view.addSubview(timerLabel)
+        myLabel.append(timerLabel)
+
+        
         cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520) // Design カウントの数字のラベル
         cntLabel.textAlignment = NSTextAlignment.Center
-        cntLabel.font = UIFont.systemFontOfSize(40)
+        cntLabel.font = UIFont.systemFontOfSize(50)
         cntLabel.text = "\(diff)"
         self.view.addSubview(cntLabel)
     }
@@ -75,7 +87,10 @@ class ViewController: UIViewController {
             buttons_char.removeAll()
             timeLabel.removeFromSuperview()
             cntLabel.removeFromSuperview()
-            myLabel.removeFromSuperview()
+            for i in myLabel{
+                i.removeFromSuperview()
+            }
+
         }
     }
     
@@ -157,15 +172,16 @@ class ViewController: UIViewController {
                 
                 // タイトルを設定する(ボタンがハイライトされた時).
                 btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
-                
+                // ボタンの影
+                btn.layer.shadowOffset = CGSizeMake(5.0, 5.0)
+                btn.layer.shadowOpacity = 0.5
+                btn.backgroundColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 0.9)
+                btn.layer.cornerRadius = 20
+
                 if y == 0 { // Design 1段目
                     btn.setTitle("▲", forState: UIControlState.Normal)
-                    btn.backgroundColor = UIColor.redColor()
-                    btn.layer.cornerRadius = 20
                 } else if y == 1 { // Design 2段目
                     btn.setTitle("▼", forState: UIControlState.Normal)
-                    btn.backgroundColor = UIColor.redColor()
-                    btn.layer.cornerRadius = 20
                 }
                 //画面に追加
                 view.addSubview(btn)
@@ -241,5 +257,29 @@ class ViewController: UIViewController {
             make(str, diff:diff, cnt:cnt)
             
         }
+    }
+    static func colorWithHexString (hex:String) -> UIColor {
+        
+        let cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+        
+        if ((cString as String).characters.count != 6) {
+            return UIColor.grayColor()
+        }
+        
+        let rString = (cString as NSString).substringWithRange(NSRange(location: 0, length: 2))
+        let gString = (cString as NSString).substringWithRange(NSRange(location: 2, length: 2))
+        let bString = (cString as NSString).substringWithRange(NSRange(location: 4, length: 2))
+        
+        var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
+        NSScanner(string: rString).scanHexInt(&r)
+        NSScanner(string: gString).scanHexInt(&g)
+        NSScanner(string: bString).scanHexInt(&b)
+        
+        return UIColor(
+            red: CGFloat(Float(r) / 255.0),
+            green: CGFloat(Float(g) / 255.0),
+            blue: CGFloat(Float(b) / 255.0),
+            alpha: CGFloat(Float(1.0))
+        )
     }
 }
