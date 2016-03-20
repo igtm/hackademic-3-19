@@ -21,6 +21,7 @@ class FlickController: UIViewController {
     let cntLabel: UILabel = UILabel()
     let timeLabel: UILabel = UILabel()
     var myLabel: [UILabel] = [] // Design カウントの周りのラベル
+    var myScore_label: UILabel = UILabel()
     var dictionary = ["apple","image","phone","meat","fish","guess"]
     var str = ""
     // UIButtonを継承した独自クラス
@@ -42,10 +43,10 @@ class FlickController: UIViewController {
         super.viewDidLoad()
         
         // 相手score変更の購読
-        //Server.server.reserveScore({(score:Int)->Void in
-        //    print("相手のが届いた: \(score)")
-        //    self.addOpScore(score);
-        //})
+        Server.server.reserveScore({(score:Int)->Void in
+            print("相手のが届いた: \(score)")
+            self.addOpScore(score);
+        })
         
         
         timerSetUp()
@@ -79,6 +80,20 @@ class FlickController: UIViewController {
         self.view.addSubview(timerLabel)
         myLabel.append(timerLabel)
         
+        var people: UILabel = UILabel()
+        people.frame = CGRectMake(0,0,(myAppFrameSize.width),140)
+        people.textAlignment = NSTextAlignment.Center
+        people.text = "Tomo                                                         Uchi"
+        self.view.addSubview(people)
+        myLabel.append(people)
+        
+        var score_label: UILabel = UILabel()
+        score_label.frame = CGRectMake(0,0,(myAppFrameSize.width),140)
+        score_label.textAlignment = NSTextAlignment.Center
+        score_label.text = "\(myScore) pt                               \(opScore) pt"
+        self.view.addSubview(score_label)
+        myLabel.append(score_label)
+        myScore_label = score_label;
         
         cntLabel.frame = CGRectMake(0,0,(myAppFrameSize.width),520) // Design カウントの数字のラベル
         cntLabel.textAlignment = NSTextAlignment.Center
@@ -113,6 +128,8 @@ class FlickController: UIViewController {
         gauge = num
         myProgressView!.setProgress(gauge, animated: true)
         
+        // score
+        myScore_label.text = "\(self.myScore) pt                               \(self.opScore) pt"
     }
     // 自分のスコア
     func addScore(){

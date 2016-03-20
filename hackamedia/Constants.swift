@@ -9,4 +9,4 @@
 import Foundation
 
 let BASE_URL = "https://sweltering-fire-4967.firebaseio.com/"
-let USER_ID = 2;
+let USER_ID = 1;
