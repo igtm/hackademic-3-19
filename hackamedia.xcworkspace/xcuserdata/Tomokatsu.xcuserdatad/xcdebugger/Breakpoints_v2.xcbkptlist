@@ -71,22 +71,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "hackamedia/ViewController.swift"
-            timestampString = "480098439.432752"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "retrive(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "hackamedia/GameController.swift"
             timestampString = "480131168.337864"
             startingColumnNumber = "9223372036854775807"
@@ -95,6 +79,99 @@
             endingLineNumber = "12"
             landmarkName = "GameController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hackamedia/FlickController.swift"
+            timestampString = "480135734.332126"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "FlickController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hackamedia.FlickController.buttons.getter : Swift.Array&lt;__ObjC.UIButton&gt;"
+                  moduleName = "hackamedia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Tomokatsu/Desktop/hackamedia/test3/hackamedia/hackamedia/FlickController.swift"
+                  timestampString = "480134589.579002"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hackamedia.FlickController.buttons.setter : Swift.Array&lt;__ObjC.UIButton&gt;"
+                  moduleName = "hackamedia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Tomokatsu/Desktop/hackamedia/test3/hackamedia/hackamedia/FlickController.swift"
+                  timestampString = "480134589.579332"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hackamedia.FlickController.buttons.materializeForSet : Swift.Array&lt;__ObjC.UIButton&gt;"
+                  moduleName = "hackamedia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Tomokatsu/Desktop/hackamedia/test3/hackamedia/hackamedia/FlickController.swift"
+                  timestampString = "480134589.579552"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hackamedia.FlickController.init (hackamedia.FlickController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; hackamedia.FlickController"
+                  moduleName = "hackamedia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Tomokatsu/Desktop/hackamedia/test3/hackamedia/hackamedia/FlickController.swift"
+                  timestampString = "480134589.579755"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hackamedia.FlickController.init (hackamedia.FlickController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;hackamedia.FlickController&gt;"
+                  moduleName = "hackamedia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Tomokatsu/Desktop/hackamedia/test3/hackamedia/hackamedia/FlickController.swift"
+                  timestampString = "480134589.579938"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "57">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

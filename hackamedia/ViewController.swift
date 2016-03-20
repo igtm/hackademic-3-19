@@ -21,22 +21,26 @@ class ViewController: UIViewController {
             if isHost {
                 var startTime = Server.server.nextGame_host(1);
                 print("次のゲーム: id: 1 startTime: \(startTime)");
-                // 相手score変更の購読
-                Server.server.reserveScore({(score:Int)->Void in
-                    let a: Int? = Int(self.textfield1.text!);
-                    self.textfield1.text = String(score + a!);
-                })
+                //　遷移
+                self.move()
             }else{
                 Server.server.nextGame_gest({(id:Int,startTime:Int) -> Void in
                     print("次のゲーム: id: \(id) startTime: \(startTime)");
-                    // 相手score変更の購読
-                    Server.server.reserveScore({(score:Int)->Void in
-                        let a: Int? = Int(self.textfield1.text!);
-                        self.textfield1.text = String(score + a!);
-                    })
+                    // 遷移
+                    self.move();
                 });
             }
         });
+    }
+    func move (){
+        // 遷移するViewを定義する.
+        let flickController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("flick") as UIViewController
+        
+        // アニメーションを設定する.
+        flickController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        
+        // Viewの移動する.
+        self.presentViewController(flickController, animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
