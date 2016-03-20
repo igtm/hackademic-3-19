@@ -42,10 +42,10 @@ class FlickController: UIViewController {
         super.viewDidLoad()
         
         // 相手score変更の購読
-        Server.server.reserveScore({(score:Int)->Void in
-            print("相手のが届いた: \(score)")
-            self.addOpScore(score);
-        })
+        //Server.server.reserveScore({(score:Int)->Void in
+        //    print("相手のが届いた: \(score)")
+        //    self.addOpScore(score);
+        //})
         
         
         timerSetUp()
@@ -58,7 +58,7 @@ class FlickController: UIViewController {
         
         // make label
         
-        timeLabel.frame = CGRectMake(40,0,(myAppFrameSize.width),187)
+        timeLabel.frame = CGRectMake(35,0,(myAppFrameSize.width),120)
         timeLabel.font = UIFont.systemFontOfSize(35)
         timeLabel.textAlignment = NSTextAlignment.Center
         timeLabel.text = "30"
@@ -73,7 +73,7 @@ class FlickController: UIViewController {
         myLabel.append(label)
         
         var timerLabel: UILabel = UILabel()
-        timerLabel.frame = CGRectMake(0,0,(myAppFrameSize.width)-40,200)
+        timerLabel.frame = CGRectMake(0,0,(myAppFrameSize.width)-40,130)
         timerLabel.textAlignment = NSTextAlignment.Center
         timerLabel.text = "Limit : "
         self.view.addSubview(timerLabel)
