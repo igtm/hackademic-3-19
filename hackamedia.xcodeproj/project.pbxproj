@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		054EE2531C9E2AAF00D80381 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054EE2521C9E2AAF00D80381 /* GameController.swift */; };
 		054EE2551C9E409B00D80381 /* FlickController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054EE2541C9E409B00D80381 /* FlickController.swift */; };
+		054EE2591C9E6B7000D80381 /* SelectGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054EE2581C9E6B7000D80381 /* SelectGameController.swift */; };
 		05E69E6A1C9D074E00B2FFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E69E691C9D074E00B2FFF1 /* AppDelegate.swift */; };
 		05E69E6C1C9D074E00B2FFF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E69E6B1C9D074E00B2FFF1 /* ViewController.swift */; };
 		05E69E6F1C9D074E00B2FFF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05E69E6D1C9D074E00B2FFF1 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		054EE2521C9E2AAF00D80381 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		054EE2541C9E409B00D80381 /* FlickController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickController.swift; sourceTree = "<group>"; };
+		054EE2581C9E6B7000D80381 /* SelectGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGameController.swift; sourceTree = "<group>"; };
 		05E69E661C9D074E00B2FFF1 /* hackamedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackamedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E69E691C9D074E00B2FFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05E69E6B1C9D074E00B2FFF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 				054EE2541C9E409B00D80381 /* FlickController.swift */,
 				054EE2521C9E2AAF00D80381 /* GameController.swift */,
 				05E69E6B1C9D074E00B2FFF1 /* ViewController.swift */,
+				054EE2581C9E6B7000D80381 /* SelectGameController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054EE2591C9E6B7000D80381 /* SelectGameController.swift in Sources */,
 				05E69E6C1C9D074E00B2FFF1 /* ViewController.swift in Sources */,
 				054EE2531C9E2AAF00D80381 /* GameController.swift in Sources */,
 				05E69E6A1C9D074E00B2FFF1 /* AppDelegate.swift in Sources */,

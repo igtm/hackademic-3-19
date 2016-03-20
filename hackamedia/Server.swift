@@ -17,8 +17,9 @@ class Server {
     private var _RECORD_REF = Firebase(url: "\(BASE_URL)/records")
     private var _ROOM_ID = "";
     private var _GAME_ID = "";
+    private var _GAME_KIND_ID = -1;
+    private var _START_TIME: Double = -1;
 
-    private var _GAMES = [1,2,3,4];
     
     var BASE_REF: Firebase {
         return _BASE_REF
@@ -35,6 +36,15 @@ class Server {
     var RECORD_REF: Firebase {
         return _RECORD_REF
     }
+    
+    var GAME_ID: String {
+        return _GAME_ID
+    }
+    
+    var START_TIME: Double {
+        return _START_TIME
+    }
+
     
     func findOpponent(cb:(NSString,Int,Bool)->Void) {
         var key: String? = nil;
@@ -85,14 +95,18 @@ class Server {
         let newRef = _ROOM_REF.childByAppendingPath(_ROOM_ID).childByAppendingPath("games").childByAutoId();
         newRef.setValue(["id":app_id,"startTime":inTenSec]);
         _GAME_ID = newRef.key; // 新しいGame_id
+        _GAME_KIND_ID = app_id; // ゲームの種類ID
+        _START_TIME = inTenSec // 開始時刻
         return inTenSec;
     }
     
-    func nextGame_gest(cb:(Int,Int)->Void){
+    func nextGame_gest(cb:(Int,Double)->Void){
         _ROOM_REF.childByAppendingPath(_ROOM_ID).childByAppendingPath("games").observeSingleEventOfType(.ChildAdded, withBlock: { snapshot in
             let id = snapshot.value.objectForKey("id") as! Int;
-            let startTime = snapshot.value.objectForKey("startTime") as! Int;
+            let startTime = snapshot.value.objectForKey("startTime") as! Double;
             self._GAME_ID = snapshot.key; // 新しいGame_id
+            self._GAME_KIND_ID = id; // ゲームの種類ID
+            self._START_TIME = startTime // 開始時刻
             print(id)
             print(startTime)
             cb(id,startTime);

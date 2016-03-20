@@ -24,7 +24,7 @@ class ViewController: UIViewController {
                 //　遷移
                 self.move()
             }else{
-                Server.server.nextGame_gest({(id:Int,startTime:Int) -> Void in
+                Server.server.nextGame_gest({(id:Int,startTime:Double) -> Void in
                     print("次のゲーム: id: \(id) startTime: \(startTime)");
                     // 遷移
                     self.move();
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     func move (){
         // 遷移するViewを定義する.
-        let flickController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("flick") as UIViewController
+        let flickController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("select_game") as UIViewController
         
         // アニメーションを設定する.
         flickController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
